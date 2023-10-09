@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center alert alert-danger ">Issued Books</h2>
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">User: </th>
+            <th scope="col">Issued Books: </th>
+          </tr>
+          {% for x in issue %}
+          <th>{{x.name}}</th>
+          <th>{{x.stock}}</th>
+          <th><a href="{% url 'ret_show' %}" class="btn btn-success md-sm">Return </a>
+           </th>
+          <tr>
+          </tr>
+          {% endfor %}
+        </thead>
+    </table>       
+    
+
+{% endblock content %}

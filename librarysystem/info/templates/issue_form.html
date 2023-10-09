@@ -1,0 +1,49 @@
+{% extends 'home.html'%}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center alert alert-danger ">Issued Books </h2>
+
+<form action="{% url 'issue_form' %}">
+    {% csrf_token %}
+    {% for i in J %}
+    <div class="form-group row">
+        <label for="inputText" class="col-sm-1 col-form-label">Student Name:</label>
+        <div class="col-sm-5">
+          <input type="text"  id="Sname" name="Sname" value="{{i.Sname}}" readonly>
+        </div>
+      </div>
+    <div class="form-group row">
+        <label for="inputText" class="col-sm-1 col-form-label">Book Name:</label>
+        <div class="col-sm-5">
+          <input type="text" id="Bname" name="Bname" value="{{i.Bname}}" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputText" class="col-sm-1 col-form-label">Book S.No:</label>
+        <div class="col-sm-5">
+          <input type="text"  id="Bid" name="Bid" value="{{i.Bid}}" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="DateTime" class="col-sm-1 col-form-label">Issue Date:</label>
+        <div class="col-sm-5">
+          <input type="text"  id="date" name="date" value="{{i.date}}" readonly >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="DateTime" class="col-sm-1 col-form-label">ExpiryDate :</label>
+        <div class="col-sm-5">
+          <input type="text"  id="expiry" name="expiry" value="{{i.expiry}}" readonly>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="form-group row ">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="container text-center my-3">  
+    <a href="{% url 'user_show' %}" class="btn btn-success"> Go Back </a> 
+    </div>
+   
+  </form>
+
+
+{% endblock content %}

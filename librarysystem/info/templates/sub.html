@@ -1,0 +1,62 @@
+{% extends 'home.html' %}
+{% block content%}
+	<!-- main -->
+	<div class="container mt-5">
+        <h2 class="text-center alert alert-danger ">Get Your Membership Pack</h2>
+    </div>
+		<form action="{% url 'sub' %}" method="post"> 	
+          {% csrf_token %}      
+             <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                      <div class="card-body p-5 text-center">
+            
+                        <div class="mb-md-5 mt-md-4 pb-5">
+            
+                          <h2 class="fw-bold mb-2 text-uppercase">Subscribe</h2>
+                          <p class="text-white-50 mb-5">Please enter your account details</p>
+            
+                          <div class="form-outline form-white mb-4">
+                            <input type="text" name="name" placeholder="Name On Card" required=""/>
+                          </div>
+            
+                          <div class="form-outline form-white mb-4">
+                            <input type="text" name="card number" placeholder="Card Number:" onkeyup="$cc.validate(event)" required=""/>
+                          </div>               
+            
+                          <div class="form-outline form-white mb-4">
+                            <input type="hidden" name="plan" placeholder="Choose Your Plan" value=""required=""/>
+                            <select class="form-control form-control-sm mb-4" name="plan" id="plan">
+                              <option>Silver</option>
+                              <option>Gold</option>
+                              <option>Platinum</option>
+                            </select>
+                          </div>
+               
+            
+                          <div class="form-outline form-white mb-4">
+                            <input type="text" name="date" onkeyup="$cc.expiry.call(this,event)" maxlength="7" placeholder="Expiration Date - mm/yyyy" required=""/>
+                          </div>
+               
+                          <div class="form-outline form-white mb-4">
+                            <input type="text" name="cvv" placeholder="CVV" maxlength="3" required=""/>
+                          </div>
+               
+                          <button class="btn btn-outline-light btn-lg px-5" type="submit">subscribe</button>
+                        </div>
+            
+                        <div>
+                          <p class="mb-0">Cancel your subscribe? <a href="{% url 'sign_up_entry' %}" class="text-white-50 fw-bold">Cancel</a>
+                          </p>
+                        </div>
+            
+                  </div>
+                 </div>
+                 </div>
+                </div>
+    </div>
+</form>  
+
+            
+{% endblock content%}

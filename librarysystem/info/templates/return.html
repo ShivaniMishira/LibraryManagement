@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center alert alert-danger ">Issued Books </h2>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <td scope="col">Student name:</td>
+            <td scope="col">Book Name: </td>
+            <td scope="col">S.No: </td>
+          </tr>
+          {% for i in V %}
+          <tr>
+            <td>{{i.Sname}}</td>
+            <td>{{i.Bname}}</td>
+            <td>{{i.Bid}}</td>
+            <td><form action="{% url 'book_return' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" class="btn btn-success" name="user" value="{{i.Sid}}" >
+                <input type="hidden" class="btn btn-success" name="book" value="{{i.Bid}}" >
+                <input type="submit" class="btn btn-success" value="Return" >
+              </form>
+            </td> 
+            {% endfor %}
+          </tr>
+   
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+{% block content%}
+<div class="container mt-5">
+    <h2 class="text-center alert alert-danger ">Get Your Membership Pack</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+<div class="col mt-5">
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Silver Card</h5>
+      <p class="card-text">Get your silver membership card and get for 1 month of free read at 150/-</p>
+      <a href="{% url 'sub' %}" class="btn btn-success md-sm">subscribe</a>
+    </div>
+  </div>
+</div>
+
+<div class="col mt-5">
+<div class="card" style="width: 18rem; ">
+    <div class="card-body ">
+      <h5 class="card-title">Golden Card </h5>
+      <p class="card-text">Get your Golden membership card and get 3 month of free read at 299/- </p>
+      <a href="{% url 'sub' %}" class="btn btn-success md-sm">subscribe</a>
+    </div>
+  </div>
+</div>
+
+<div class="col mt-5">
+<div class="card" style="width: 18rem; ">
+    <div class="card-body">
+      <h5 class="card-title">Pletinum Card</h5>
+      <p class="card-text">Get your Golden membership card and get 6 month of free read at 599/-</p>
+      <a href="{% url 'sub' %}" class="btn btn-success md-sm">subscribe</a>
+    </div>
+  </div>
+</div>
+ </div>
+</div>
+    
+{%endblock content%}

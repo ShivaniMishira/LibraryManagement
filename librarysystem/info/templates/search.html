@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<table class="table">
+    <thead class="thead-dark">
+      {% for x in con %}
+      <tr>
+        <th>{{x.name}} </th>
+        <th>{{x.author}} </th>
+        <th>{{x.publish}} </th>
+        <th>{{x.category}} </th>
+        <th>{{x.language}} </th>
+        <th>{{x.stock}} </th>
+        <td><a href="{% url 'book_delete' x.id %}" class="btn btn-danger md-sm">Delete</a></td>          
+        <td><a href="{% url 'book_edit' x.id %}" class="btn btn-success md-sm">Update</a></td>
+      </tr>
+      {% endfor %}
+    </thead>
+</table>       
+
+{% endblock content %}

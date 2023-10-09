@@ -1,0 +1,37 @@
+{% extends 'home.html' %}
+{% block content %}
+<form class="form-inline my-2 my-lg-0"  action="{% url 'search' %}" method="POST">{% csrf_token%}
+          <input class="w-50 p-3 h-25 d-inline-block" type="search" name="search" placeholder=" Search User" aria-label="Search">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+<div class="container mt-2">
+  <h2 class="text-center alert alert-danger ">Disscussion Forum </h2>
+</div>
+<a href="{% url 'forumadd' %}" class="btn btn-success md-sm">Post Your Question Here</a>
+
+{% for p in posts %}
+<div class="container-fluid mt-100">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="media flex-wrap w-100 align-items-center"> <img src="" class="d-block ui-w-40 rounded-circle" alt="">
+                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true" >{{p.name_user}}</a>
+                            <div class="text-muted small">{{p.timestamp}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p> {{ p.post_content }}</p>
+                </div>
+                <div class="px-4 pt-3"> <a href="{% url 'reply' p.id  %}" class="btn btn-dark md-sm">Reply </a> </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+{% endfor %}
+    
+       
+{% endblock content %}

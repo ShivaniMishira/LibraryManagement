@@ -1,0 +1,39 @@
+{% extends 'home.html'  %}
+{% block content%}
+<div class="container mt-5">
+  <h2 class="text-center alert alert-danger ">User Corner</h2>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Book: </th>
+        <th scope="col">Author: </th>
+        <th scope="col">Publish Date: </th>
+        <th scope="col">Category: </th>
+        <th scope="col">Language: </th>
+        <th scope="col">Available Stock: </th>
+      </tr>
+      {% for x in mybook %}
+      <tr>
+        <th>{{x.name}} </th>
+        <th>{{x.author}} </th>
+        <th>{{x.publish}} </th>
+        <th>{{x.category}} </th>
+        <th>{{x.language}} </th>
+        <th>{{x.stock}} </th>        
+        <td> 
+          <form method="POST" action="{% url 'book_issued' %}"> 
+          {% csrf_token %}
+          <input type="hidden" class="btn btn-success" name = "book" value="{{x.id}}"> 
+         <input type="hidden"   class="btn btn-success" name = "user" value="{{stu}}">
+         <input type="submit"   class="btn btn-success">
+         
+        </form>
+       </td>          
+        
+      </tr>
+      {% endfor %}
+    </thead>
+</table>       
+
+
+{% endblock content%}

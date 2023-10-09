@@ -1,0 +1,54 @@
+{% extends 'home.html'%}
+{% block content%}
+<br>
+<form action="{% url 'discussion' %}" method="POST"> {% csrf_token %}
+  {% for x in X %}
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="media flex-wrap w-100 align-items-center"> <img src=""
+                            class="d-block ui-w-40 rounded-circle" alt="" width="40px" height="40px">
+                        <div class="media-body ml-3" style="text-transform: uppercase;"> <a data-abc="true">{{x.name_user}}</a>
+                        </div>
+                        <div class="text-muted small ml-3">
+                            <div>Date and Time Of Post :</div>
+                            <div><strong>{{x.timestamp}}</strong></div>
+                        </div>
+                    </div>
+                </div>         
+                <div class="card-body">
+                    <p>{{x.post_content}}</p>
+                </div>
+                <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+\                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-body">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Post Your Solution Here</label>
+        <input type="hidden" name="post_id" value="{{x.id}}" re>
+        <textarea class="form-control" id="desc" name="desc" rows="3" required placeholder="reply......."></textarea>
+      </div>
+</div>
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success">Post Solution</button>
+</div>
+  </form>
+  {% endfor %}
+  {% for reply in replies %}
+  <br>
+  <div class="container">
+  <div class="media">
+      <img class="mr-3 rounded-circle" src="" alt="." width="30px" height="30px">
+      <div class="media-body">
+        <h4 class="mt-0">{{reply.name_user}}	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;  <span><small style="font-size: 13px;">({{reply.timestamp}})</small></span></h4>   
+        <h5>{{reply.reply_content}}</h5>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock content%}
